@@ -1,0 +1,11 @@
+|-- CoolProject
+    |-- .gitignore
+    |-- README.md
+    |-- package-lock.json
+    |-- package.json
+    |-- docs
+        |-- README.md
+        |-- .vuepress
+            |-- config.js
+            |-- public
+                |-- favicon.ico
