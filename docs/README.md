@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /Wakaka.webp
+heroImage: /Wakaka.png
 heroText: Web架构之脚手架
 tagline: 脚手架
 actionText: 阅读笔记 →

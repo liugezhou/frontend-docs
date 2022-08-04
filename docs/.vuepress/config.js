@@ -5,8 +5,8 @@ module.exports = {
   themeConfig: {
     logo: '/time.png',
     displayAllHeaders: false,  // 左侧内容是否全部展开
-    searchMaxSuggestions: 10,
-    lastUpdated: '更新时间',
+    // searchMaxSuggestions: 10,
+    lastUpdated: '上次更新',
     sidebar: {
       '/web/':['00', '01', '02','03','04','05','06','14','15','16','17','28','29','30','31','32','33'],
     },
@@ -27,12 +27,5 @@ module.exports = {
     editLinks: true,
     editLinkText: '错误反馈',
     smoothScroll: true
-  },
-  configureWebpack: {
-    resolve: {
-      alias: {
-        '@': 'docs/image',
-      },
-    },
-  },
+  }
 }

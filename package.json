@@ -1,8 +1,7 @@
 {
-  "name": "web-staging-doc",
+  "name": "frontend-docs",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "frontend notes",
   "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
