@@ -1,7 +1,7 @@
 module.exports = {
   title: '前端网路笔记',
   description: '前端学习',
-  base: '/liugezhou-doc/',
+  base: '/frontend-docs/',
   themeConfig: {
     logo: '/time.png',
     displayAllHeaders: false,  // 左侧内容是否全部展开
