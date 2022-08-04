@@ -24,6 +24,7 @@ module.exports = {
     ],
     repo: 'liugezhou/frontend-docs',
     repoLabel: 'Github',
+    docsBranch: 'main',
     editLinks: true,
     editLinkText: '错误反馈',
     smoothScroll: true
