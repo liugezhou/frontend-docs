@@ -37,4 +37,7 @@
 - search:false    对该页面搜索禁用 [搜索范围为h2 h3 tags，若要全局搜索可以使用Algolia ]
 - editLink: false 禁用指定页面的编辑链接
 - pageClass: className  针对页面的CSS
+- home:true      文档主页，提供了一些feature
 
+Q1: 项目打包的时候报错:TypeError _normalized undefined
+A: md文件中有`<router-link>`和`<router-view/>`的标签，没有用反引号括起来。

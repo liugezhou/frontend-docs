@@ -1,29 +1,30 @@
 module.exports = {
-  title: '前端网路笔记',
-  description: '前端学习',
+  title: '前端笔记',
+  description: '脚手架 浏览器渲染原理 Github说明书 Webpack',
   base: '/frontend-docs/',
   themeConfig: {
     logo: '/time.png',
-    displayAllHeaders: false,  // 左侧内容是否全部展开
-    // searchMaxSuggestions: 10,
+    displayAllHeaders: false,
+    searchMaxSuggestions: 10,
     lastUpdated: '上次更新',
     sidebar: {
-      '/web/':['00', '01', '02','03','04','05','06','14','15','16','17','28'],
+      '/web/':['before','00', '01', '02','03','04','05','06','14','15','16','17','28','29','30','31','32','33'],
     },
     nav: [
       { text: '首页', link: '/' },
-      { text: 'Web架构之脚手架', link: '/web/00.md' },
+      { text: '前端脚手架', link: '/web/before' },
+      { text: '浏览器渲染原理', link: 'https://liugezhou.gitbook.io/liugezhou/' },
       {
-        text: '我的博客',
+        text: '其它',
         ariaLabel: 'Language Menu',
         items: [
-          { text: '六个周', link: 'https://blog.liugezhou.online' },
-          { text: '浏览器渲染原理', link: 'https://liugezhou.gitbook.io/liugezhou/' }
+          { text: '我的博客', link: 'https://blog.liugezhou.online' },
+          { text: 'Github', link: 'https://github.com/liugezhou' },
         ]
       }
     ],
-    repo: 'liugezhou/frontend-docs',
-    repoLabel: 'Github',
+    // repo: 'liugezhou',
+    // repoLabel: 'Github',
     docsBranch: 'main',
     editLinks: true,
     docsDir: "/docs/",
