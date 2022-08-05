@@ -26,6 +26,7 @@ module.exports = {
     repoLabel: 'Github',
     docsBranch: 'main',
     editLinks: true,
+    docsDir: "/docs/",
     editLinkText: '错误反馈',
     smoothScroll: true
   }
