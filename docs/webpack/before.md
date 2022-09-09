@@ -1,12 +1,13 @@
 ---
-title: Webpack-demo
+title: Webpack必会经典
 description: webpack-demo
-jint---
+---
 
 仓库示例代码地址：[https://github.com/liugezhou/webpack-demo](https://github.com/liugezhou/webpack-demo)
 
 
 ### 目录结构
+
 ```
 |-- webpack-demo
     |-- .babelrc

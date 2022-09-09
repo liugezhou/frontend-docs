@@ -9,7 +9,7 @@ module.exports = {
     lastUpdated: '上次更新',
     sidebar: {
       '/web/':['before','00', '01', '02','03','04','05','06','14','15','16','17','28','29','30','31','32','33'],
-      '/webpack/':['before']
+      '/webpack/':['before','vim']
     },
     nav: [
       { text: '首页', link: '/' },
