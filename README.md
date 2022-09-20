@@ -39,5 +39,33 @@
 - pageClass: className  针对页面的CSS
 - home:true      文档主页，提供了一些feature
 
+9. 自动部署
+- 新建 .github/workflows/vue-press-deploy.yml 
+```
+name: Build and Deploy
+# 在main分支发生push事件时触发。
+on:
+  push:
+    branches:
+      - main
+env: # 设置环境变量
+  TZ: Asia/Shanghai # 时区（设置时区可使页面中的`最近更新时间`使用时区时间）
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: vuepress-deploy
+      uses: jenkey2011/vuepress-deploy@master
+      env:
+        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        TARGET_REPO: liugezhou/frontend-docs
+        TARGET_BRANCH: gh-pages
+        BUILD_SCRIPT: npm install && npm run  build
+        BUILD_DIR: docs/.vuepress/dist
+        # CNAME: https://www.xxx.com
+```
 Q1: 项目打包的时候报错:TypeError _normalized undefined
 A: md文件中有`<router-link>`和`<router-view/>`的标签，没有用反引号括起来。
