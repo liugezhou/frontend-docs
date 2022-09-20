@@ -54,7 +54,7 @@ module.exports = {
       { text: '前端笔记', link: '/webpack/before' },
       {
         text: '浏览器渲染原理',
-        link: 'https://liugezhou.gitbook.io/liugezhou/',
+        link: 'https://blog.liugezhou.online/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/',
       },
       { text: '他的博客', link: 'https://blog.liugezhou.online' },
     ],
