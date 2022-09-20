@@ -1,11 +1,15 @@
 ---
 home: true
 heroImage: /official.png
-heroText: 前端脚手架
+heroText: 今日前端
 tagline: null
-actionText: 快速阅读 →
-actionLink: /web/before
+actionText: Go →
+actionLink: /everyday/today
 features:
+- title: 每日5道前端题
+  details: 每日五道前端基础知识
+- title: 浏览器渲染原理攻略
+  details: 浏览器相关内容极简总结
 - title: 前端脚手架
   details: 前端脚手架相关内容
 - title: 浏览器渲染原理攻略
