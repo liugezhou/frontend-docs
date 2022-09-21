@@ -44,14 +44,14 @@ module.exports = {
         '32',
         '33',
       ],
-      '/webpack/': ['before', 'vim'],
+      '/notes/': ['before', 'vim'],
       '/everyday/': ['today', 'history'],
     },
     nav: [
       { text: '首页', link: '/' },
       { text: '今日前端', link: '/everyday/today' },
       { text: '前端脚手架', link: '/web/before' },
-      { text: '前端笔记', link: '/webpack/before' },
+      { text: '前端笔记', link: '/notes/before' },
       {
         text: '浏览器渲染原理',
         link: 'https://blog.liugezhou.online/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/',
