@@ -2,98 +2,84 @@
 title: Today
 ---
 
-<div align="right" style="color:#512DA8">2022-09-21 星期三</div> 
+<div align="right" style="color:#512DA8">2022-09-22 day4</div> 
 
-> 无所畏惧（fearless）不是没有恐惧；而是你依然心怀恐惧，但无论如何都决定要跳进去。
+> 想起来全是问题，做起来才有答案。
 
-<p style="color:blue">1.在地址栏里输入一个 URL,到这个页面呈现出来，中间会发生什么？</p>
+<p style="color:blue">1. || 和 && 操作符的返回值是什么？【JS】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-参考答案[见这里](https://blog.liugezhou.online/A1%E9%98%B6%E6%AE%B5%E4%B8%80%EF%BC%9A%E5%AE%8F%E8%A7%82%E8%A7%86%E8%A7%92%E4%B8%8B%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8/#03%EF%BD%9CHTTP%E8%AF%B7%E6%B1%82%E6%B5%81%E7%A8%8B%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BE%88%E5%A4%9A%E7%AB%99%E7%82%B9%E7%AC%AC%E4%BA%8C%E6%AC%A1%E6%89%93%E5%BC%80%E9%80%9F%E5%BA%A6%E4%BC%9A%E5%BE%88%E5%BF%AB)
+- `||`最终返回转换为布尔值为true的那个值，如果都没有true值，返回最后一个。
+- `&&`最终返回转化为布尔值为false的那个值，如果都是true,返回最后一个。
+
 </p>
 </details>
 
-<p style="color:blue">2. HTML5 和 CSS3 用的多吗？你了解它们的新属性吗？有在项目中用过吗？	</p>
+<p style="color:blue">2. 怎么将一个值转换为二进值，以及如何将一个二进制数转换为十进制 【JS】 </p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-**HTML5**
-- 8 个语义元素： header section footer aside nav main article figure(经测试，只要figure有样式，其它语义标签只是display:block)
-- 内容元素： 
-    - mark 高亮 { background-color:mark;color:marktext }
-    - progress 进度新的表单控件 
-    - input type新加属性 date time search color datetime-local
-- canvas 绘图  
-- 支持内联 SVG。   
-- 多媒体元素 audio(audio中source) video  embed track
-- 本地离线存储，把需要离线存储在本地的文件列在一个 manifest 配置文件  
-- web 存储 localStorage、SessionStorage  
-
-**CSS3**  
-- CSS3 边框如 border-radius，box-shadow 等；
-- CSS3 背景如 background-size，background-origin 等；
-- CSS3 2D，3D 转换如 transform 等；CSS3 动画如 animation等。
+- 二进制转十进值：(1010101).toString(2) ‘toString()中转进值’  
+- 十进制数转二进制：Number.parseInt(10100,2)
 
 </p>
 </details>
 
-<p style="color:blue">3. CSS的重绘和重排的区别，以及需要注意什么？哪些属性会导致重绘和重排</p>
+<p style="color:blue">3. 为什么0.1+0.2!==0.3，如何使其相等？【JS】 </p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-一、重绘不一定需要重排，重排必然会导致重绘
-1. 重排：当渲染树的一部分必须更新并且节点的尺寸发生了变化，浏览器会使渲染树中受到影响的部分失效，并重新构造渲染树。
-  1.1 添加、删除可见的dom 
-  1.2 元素的位置改变 
-  1.3 元素的尺寸改变（外边距、内边距、边框厚度、宽高等几何属性）
-  1.4 页面渲染初始化 
-  1.5 浏览器窗口尺寸改变
-2. 重绘：是在一个元素的外观被改变所触发的浏览器行为，浏览器会根据元素的新属性重新绘制，使元素呈现新的外观。
+- 计算机是通过二进制存储数据的，所以在计算0.1 + 0.2的时候，是计算这两个数二进制的和，然而这俩数都是无限循环的数，因此再次转成十进值的时候就会转成一个无限循环的多位数，因此0.1+0.2!==0.3    
+- 解决:Number.parseFloat((0.1+0.2).toFixed(10)) 
 
-二、注意点：减少reflow、repaint
-1. 不要一条一条的修改DOM的样式，可以先定义好css的class，然后修改DOM的className。
-2. 不要把DOM结点的属性值放在一个循环里当成循环里的变量。
-3. 为动画的HTML元件适用fixed或absolute的position，那么修改他们的css是不会reflow
+- 另外还有一个Number.EPSILON值，根据规格，它表示 1 与大于 1 的最小浮点数之间的差，Number.EPSILON实际上是 JavaScript 能够表示的最小精度。误差如果小于这个值，就可以认为已经没有意义了，即不存在误差了。  
 
-三、尽量使用重绘操作
-- visibility=hidden不改变页面布局，仍然占位，但不会触发绑定的事件(重绘操作)
-- opacity=0 不改变页面布局，仍然占位，可以触发绑定的事件(重绘操作)
-- display: none改变页面布局，不再占位(重排操作)
+- 遗留问题：1.1+2.2的和与3.3进行比较，误差大于Number.EPSILON，即0.3000000000000003 > 0.30000000000000022204返回了true。。。
 
 </p>
 </details>
 
-<p style="color:blue">4. transform属性使用 </p>
+<p style="color:blue">4. 请说出三种方式来判断一个对象是否为数组 【JS】</p>
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+值为value
+- Array.isArray(value) 返回true则是数组，否则不是数组
+- Object.prototype.toString.call(value) 若为'[object Array]'则为数组，都为不是数组  
+- value instanceof Array 若返回true则为数组。 
+- Array.prototype.isPrototypeOf(value) 若返回true则为数组
+
+</p>
+</details>
+
+<p style="color:blue">5. typeof null 的结果是什么？为什么？【JS】 </p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-用于元素的2D或3D转换，允许你将元素旋转,缩放,移动,倾斜等。 [详细transform](https://developer.mozilla.org/zh-CN/docs/Web/CSS/transform)
-```
-{
-    transform:rotate(7deg);
-    -ms-transform:rotate(7deg); 	/* IE 9 */
-    -moz-transform:rotate(7deg); 	/* Firefox */
-    -webkit-transform:rotate(7deg); /* Safari 和 Chrome */
-    -o-transform:rotate(7deg); 	/* Opera */
-}
-```
-transform: none | rotate | scale | skew | translate | matrix;
+- 'object',这是JS最初的一个设计错误。
 
+在 JavaScript 第一个版本中，所有值都存储在 32 位的单元中，每个单元包含一个小的 类型标签(1-3 bits) 以及当前要存储值的真实数据。  
+类型标签存储在每个单元的低位中，共有五种数据类型：  
+- 000: object   - 当前存储的数据指向一个对象。
+-   1: int      - 当前存储的数据是一个 31 位的有符号整数。
+- 010: double   - 当前存储的数据指向一个双精度的浮点数。
+- 100: string   - 当前存储的数据指向一个字符串。
+- 110: boolean  - 当前存储的数据是布尔值。
+
+如果最低位是 1，则类型标签标志位的长度只有一位；  
+如果最低位是 0，则类型标签标志位的长度占三位，为存储其他四种数据类型提供了额外两个 bit 的长度。   
+有两种特殊数据类型：  
+- undefined的值是 -2<sup>30</sup> (一个超出整数范围的数字)；
+- null 的值是机器码 NULL 指针(null 指针的值全是 0)
+
+那也就是说null的类型标签也是000，和Object的类型标签一样，所以会被判定为Object。
 </p>
 </details>
 
-<p style="color:blue">5. js中数组的方法有哪些</p>
-
-<details>
-<summary><b>参考答案</b></summary>
-<p>
-
-参考答案[见这里](https://blog.liugezhou.online/012-JS%E6%95%B0%E7%BB%84/)
-</p>
-</details>
