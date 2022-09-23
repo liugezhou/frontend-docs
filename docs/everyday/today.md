@@ -2,84 +2,109 @@
 title: Today
 ---
 
-<div align="right" style="color:#512DA8">2022-09-22 day4</div> 
+<div align="right" style="color:#512DA8">2022-09-23 星期五</div> 
 
-> 想起来全是问题，做起来才有答案。
+> 你之所以会活的不开心，是因为你太喜欢回头看了，人的这一生很长，不要站在现在的角度去批判过去的自己，除了生病之外，我们所有能感受到的痛苦，都不是真实存在的，而是那么多年的价值观所带来的的，所以即使人生能够重来，相信以当时的心智和当时的阅历，我们还是会做出同样的选择，所以人一定要学会跟自己和解，去接受每一个阶段的自己，无论好坏，这都是你的人生。
 
-<p style="color:blue">1. || 和 && 操作符的返回值是什么？【JS】</p>
+<p style="color:blue">1. typeof NaN的结果？isNaN和Number.isNaN函数的区别？【JS】 </p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- `||`最终返回转换为布尔值为true的那个值，如果都没有true值，返回最后一个。
-- `&&`最终返回转化为布尔值为false的那个值，如果都是true,返回最后一个。
+NaN 指“不是一个数字”，用于指出数字类型中的错误情况。  
+`typeof NaN; // "number"`
+
+NaN 是一个特殊值，它和自身不相等，是唯一一个非自反的值。  
+`NaN !== NaN 为 true。`
+
+函数isNaN会将参数转换为数值，任何不能被转换为数值的值都会返回true，因此非数字值传入也会返回true。   
+函数 Number.isNaN 会首先判断传入参数是否为数字，如果是数字再继续判断是否为 NaN ，不会进行数据类型的转换，这种方法对于 NaN 的判断更为准确。
 
 </p>
 </details>
 
-<p style="color:blue">2. 怎么将一个值转换为二进值，以及如何将一个二进制数转换为十进制 【JS】 </p>
+<p style="color:blue">2. Object.is() 与比较操作符 “===”、“==” 的区别？【JS】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 二进制转十进值：(1010101).toString(2) ‘toString()中转进值’  
-- 十进制数转二进制：Number.parseInt(10100,2)
+- 使用双等号（==）进行相等判断时，如果两边的类型不一致，则会强制类型转化后再进行比较。
+- 使用三等号（===）进行相等判断时，如果两边的类型不一致时，直接返回 false。
+- 使用 Object.is 来进行相等判断时，一般情况下和三等号的判断相同，它处理了一些特殊的情况，比如 -0 和 +0 不再相等，两个 NaN 是相等的。    
+
++0 === -0 //true    
+NaN === NaN // false
+ 
+Object.is(+0, -0) // false    
+Object.is(NaN, NaN) // true   
 
 </p>
 </details>
 
-<p style="color:blue">3. 为什么0.1+0.2!==0.3，如何使其相等？【JS】 </p>
+<p style="color:blue">3. Object.assign和扩展运算法是深拷贝还是浅拷贝 【JS】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 计算机是通过二进制存储数据的，所以在计算0.1 + 0.2的时候，是计算这两个数二进制的和，然而这俩数都是无限循环的数，因此再次转成十进值的时候就会转成一个无限循环的多位数，因此0.1+0.2!==0.3    
-- 解决:Number.parseFloat((0.1+0.2).toFixed(10)) 
+两者都是浅拷贝
 
-- 另外还有一个Number.EPSILON值，根据规格，它表示 1 与大于 1 的最小浮点数之间的差，Number.EPSILON实际上是 JavaScript 能够表示的最小精度。误差如果小于这个值，就可以认为已经没有意义了，即不存在误差了。  
+- 扩展运算符：
+```
+let outObj = {
+  inObj: {a: 1, b: 2}
+}
+let newObj = {...outObj}
+newObj.inObj.a = 2
+console.log(outObj) // { inObj: {a: 2, b: 2} }
+```
 
-- 遗留问题：1.1+2.2的和与3.3进行比较，误差大于Number.EPSILON，即0.3000000000000003 > 0.30000000000000022204返回了true。。。
+- Object.assign():
+```
+let outObj = {
+  inObj: {a: 1, b: 2}
+}
+let newObj = Object.assign({}, outObj)
+newObj.inObj.a = 2
+console.log(outObj) // { inObj: {a: 2, b: 2} }
+```
 
 </p>
 </details>
 
-<p style="color:blue">4. 请说出三种方式来判断一个对象是否为数组 【JS】</p>
+<p style="color:blue">4. 深拷贝方法 【JS】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-值为value
-- Array.isArray(value) 返回true则是数组，否则不是数组
-- Object.prototype.toString.call(value) 若为'[object Array]'则为数组，都为不是数组  
-- value instanceof Array 若返回true则为数组。 
-- Array.prototype.isPrototypeOf(value) 若返回true则为数组
+JSON.stringify()  
+JSON.parse()
 
 </p>
 </details>
 
-<p style="color:blue">5. typeof null 的结果是什么？为什么？【JS】 </p>
+<p style="color:blue">5.手写递归深拷贝 【JS】 </p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 'object',这是JS最初的一个设计错误。
+```JavaScript
+ function deepClone1(obj) {
+        var objClone = Array.isArray(obj) ? [] : {};
+        if (obj && typeof obj === "object") {
+            for (key in obj) {
+                if (obj.hasOwnProperty(key)) {
+                    if (obj[key] && typeof obj[key] === "object") {
+                        objClone[key] = deepClone1(obj[key]);
+                    } else {
+                        objClone[key] = obj[key];
+                    }
+                }
+            }
+        }
+        return objClone;
+    }
+```
 
-在 JavaScript 第一个版本中，所有值都存储在 32 位的单元中，每个单元包含一个小的 类型标签(1-3 bits) 以及当前要存储值的真实数据。  
-类型标签存储在每个单元的低位中，共有五种数据类型：  
-- 000: object   - 当前存储的数据指向一个对象。
--   1: int      - 当前存储的数据是一个 31 位的有符号整数。
-- 010: double   - 当前存储的数据指向一个双精度的浮点数。
-- 100: string   - 当前存储的数据指向一个字符串。
-- 110: boolean  - 当前存储的数据是布尔值。
-
-如果最低位是 1，则类型标签标志位的长度只有一位；  
-如果最低位是 0，则类型标签标志位的长度占三位，为存储其他四种数据类型提供了额外两个 bit 的长度。   
-有两种特殊数据类型：  
-- undefined的值是 -2<sup>30</sup> (一个超出整数范围的数字)；
-- null 的值是机器码 NULL 指针(null 指针的值全是 0)
-
-那也就是说null的类型标签也是000，和Object的类型标签一样，所以会被判定为Object。
 </p>
 </details>
-
