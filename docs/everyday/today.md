@@ -2,156 +2,99 @@
 title: Today
 ---
 
-<div align="right" style="color:#512DA8">2022-09-28 星期三</div>
+<div align="right" style="color:#512DA8">2022-09-29 星期四</div> 
 
-> The things one is most proud of are often the hardest things to do. You must not doubt it.
+> 所有值得做的事情，做得一团糟也值得做，因为做得糟总比不做好。
 
-<p style="color:blue">1. JS创建对象的方式 【JS】</p>
+<p style="color:blue">1. CSS中的calc函数用法 【CSS】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-1. 通过 Object()方法来创建 `let obj = new Object({a:1})`
-2. 通过字面量创建对象 `let obj ={a:1}`
-3. 通过自定义函数创建对象
-
-```javascript
-function Image(width,height){
-    this.width=width;
-    this.height=height;
-    this.content=function{
-    console.log("图片的高是"+this.height+"宽是"+this.width);
-    }
-  }
- var image=new Image("300px","300px");
- image.content();
-
-```
-
-4. 通过工厂模式创建对象
-
-```javascript
-function createPerson(name, age, gender) {
-  //创建一个新的对象
-  var obj = new Object()
-  //向对象中添加属性
-  obj.name = name
-  obj.age = age
-  obj.gender = gender
-  obj.sayName = function () {
-    alert(this.name)
-  }
-  return obj
-}
-```
-
-5. 通过原型模式
-```javascript
-function Person(){};
-Person.prototype.name="Mary";
-Person.prototype.age=18;
-Person.prototype.job="teacher";
-Person.prototype.sayName=function (){
-    alert(this.name);
-}
-var person1=new Person(); 
-person1.sayName();   //Mary-来自原型
-
-var person2= new Person(); 
-person2.sayName();   //Mary-来自原型
-```
+- calc()函数支持加减乘除四种运算。
+- 书写上一定要注意啊，加减号两边一定要有空格
+- 任何长度值都可以使用calc函数进行计算:% vh vw px em等
+- calc函数使DOM元素更加灵活的响应视口改变，还可以通过calc函数实现元素的绝对剧中定位(position:absolute;top:calc(50vh - Xpx))
 
 </p>
 </details>
 
-<p style="color:blue">2. ["1", "2", "3"].map(parseInt) 输出？ 【JS】</p>
+<p style="color:blue">2. 谈谈HTTP2 【HTTP】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-[1,NaN,NaN]
-解析：
+**HTTP2的多路复用**
+针对 HTTP/1.1 的问题，队头阻塞是由于 TCP 本身机制导致的，所以 HTTP/2.0 就针对了如何规避 TCP 的慢启动和 TCP 连接之间的宽带竞争下手。 
+HTTP/2 的解决思路是一个域名只使用一个TCP 长连接来传输数据，这样整个页面的资源下载只需要一次慢启动，且避免了多个 TCP 连接竞争宽带的问题。  
+当然如果一个域名使用一个TCP长连接，那么针对队头阻塞问题，请求完一个请求再去发送另一个请求无疑是非常慢的，所以 HTTP/2 需要实现资源的并行请求：也就是任何时候都可以将请求发送给服务器。 
 
-1. map 函数的 callback 参数：自动传入三个参数
-   currentValue（当前被传递的元素）
-   index（当前被传递的元素的索引）
-   array（调用 map 方法的数组）
+一句话总结 HTTP/2 为：一个域名只使用一个 TCP 长连接和解决队头阻塞问题。 也就是最具颠覆性的多路复用机制。
+多路复用机制的过程：是说每一个请求都一有一个对应的ID，服务端拿到这些请求的ID和内容后，自行决定哪些是关键资源，然后立即将关键资源返回。好处就是优先处理关键资源请求。
 
-2. parseInt 方法接收两个参数
-   第三个参数["1", "2", "3"]将被忽略。
+**多路复用的实现**
+HTTP/2添加了一个二进制分帧层。
+然后客户端发送过来的请求，经过这个层，进行处理给他们编号(帧)，然后发送给服务器。
+服务器接收到请求，将相同编号的进行合并成一条完整信息进行一次处理，然后再返回给这个二进制分帧层。
+二进制分帧层再将响应数据拆开，然后返回给客户端。
 
-parseInt 的第二个参数为 0 时，作为十进制数字的字符串解析；  
-parseInt 的第二个参数为 1 时，解析结果为 NaN；  
-parseInt 的第二个参数在 2—36 之间时，如果第一个参数（除空白以外），不属于指定进制下的字符，解析结果为 NaN。 
-parseInt("3", 2)执行时，由于"3"不属于二进制字符，解析结果为 NaN。 
+**HTTP/2其他特性-基于二进制分帧层**
+可以设置请求的优先级
+服务器推送：HTTP2可以直接将数据提前推送至客户端
+头部压缩：对请求头和响应头做了压缩。
+其它
 
 </p>
 </details>
 
-<p style="color:blue">3. position的全部属性 【CSS】</p>
+<p style="color:blue">3. Webpack的热更新理解 【Webpack】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-|值|	描述|
-|-|-|
-|absolute|	生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。 元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。|  
-|fixed|	生成绝对定位的元素，相对于浏览器窗口进行定位。 元素的位置通过 "left", "top", "right" 以及 "bottom" 属性进行规定。|  
-|relative	|生成相对定位的元素，相对于其正常位置进行定位。 因此，"left:20" 会向元素的 left 位置添加 20 像素。|
-|sticky|	CSS3 新增，粘性定位，相对于最近的一个拥有“滚动机制”的祖先上（当该祖先的overflow 是 hidden, scroll, auto 或 overlay时，即不是 visible 时）。 它的行为就像 position:relative 而当页面滚动超出目标区域时，它的表现就像 position:fixed，它会固定在目标位置。|
-|static	|默认值。没有定位，元素出现在正常的流中 （忽略 left、top、right、bottom 或者 z-index 声明）。|
-|inherit|	规定应该从父元素继承 position 属性的值。|
+webpack的热更新又称为热替换(Hot Module Replacement) – `HMR`
+这个机制可以做到不用刷新浏览器而将变更的模块替换掉。
+
+HMR的核心就是：客户端从服务端拉去更新后的文件(他们直接维护了一个websocket)，当本地资源发生变更后，客户端进行资源对比，然后增量更新。
+开启HMR，要在webpack配置文件的devServer中设置hot为true即可。
 
 </p>
 </details>
 
-<p style="color:blue">4. 如何删除一个cookie？【JS】 </p>
+<p style="color:blue">4. babel是什么，基本原理以及配置文件的基本格式是什么 【JS】 </p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-Cookie并不提供修改、删除操作。如果要修改某个Cookie，只需要新建一个同名的Cookie来覆盖原来Cookie。  
+1. babel是什么？
+Babel 是一个广泛使用的 ES6 转码器，可以将 ES6 代码转为 ES5 代码，从而在老版本的浏览器执行。这意味着，你可以用 ES6 的方式编写程序，又不用担心现有环境是否支持。
 
-1. 如果没有显示设置cooke过期时间，cookie不会存入本地硬盘，仅存留于内存中。  
-当我们关闭浏览器的时候，cookie会自动删除，生命周期无需我们操控。
+2. Babel的基本工作原理
+主要分为 parsing、transforming、printing三个阶段
+parsing为解析阶段，将ES6代码进行词法分析和语法分析转换成抽象语法树
+transforming为转换阶段，将抽象语法树进行变换操作
+printing为生成阶段，通过babel-generator生成对应的代码。
 
-2. 删除Cookie的代码示例
-```javascript
-//取cookies     
-function getCookie(name){
-  let arr = document.cookie.match(new RegExp("(^| )" + name + "=([^;]*)(;|$)"));
-  if (arr != null) return unescape(arr[2]); 
-  return null;
-}
-//删除cookie
-function delCookie(name){
-  var exp = new Date();
-  exp.setTime(exp.getTime() - 1);
-  var cval = getCookie(name);
-  if (cval != null) 
-    document.cookie = name + "=" + cval + ";expires=" + exp.toGMTString()+";path=/";
-}
-delCookie("name");
-document.cookie;
+3. 配置文件.babelrc的基本格式
+首先，我们先对babel配置的基本格式有个浅显的了解：他是个对象、他的两个属性都是数组，他们分别是presets和plugins。
 ```
-
-3. 使用三方库`js-cookie`->`Cookies.remove('name', { path: '' })`
-
+{
+  "presets": [],
+  "plugins": []
+}
+```
 </p>
 </details>
 
-<p style="color:blue">5.XML与JSON的区别？【JS】 </p>
+<p style="color:blue">5. 什么是CSS Sprite（“精灵图”）【CSS】</p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-xml和json都是数据传输的载体，并且具有跨平台跨语言的特性，区别如下： 
-1. 数据体积方面。JSON 相对于 XML 来讲，数据的体积小，传递的速度更快些。
-2. 数据交互方面。JSON 与 JavaScript 的交互更加方便，更容易解析处理，更好的数据交互。
-3. 数据描述方面。JSON 对数据的描述性比 XML 较差。
-4. 传输速度方面。JSON 的速度要远远快于 XML。
+- CSS Sprites叫 CSS精灵或者雪碧图，是一种网页图片应用处理方式。
+- CSS Sprites其实就是把网页中一些背景图片整合到一张图片文件中。再利用CSS的"background-image"，“background-repeat”，"background-position"的组合进行背景定位，background-position可以用数字精确的定位出背景图片的位置
 
 </p>
 </details>
