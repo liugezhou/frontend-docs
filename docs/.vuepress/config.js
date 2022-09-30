@@ -1,5 +1,5 @@
 module.exports = {
-  title: '每日前端',
+  title: '今日前端',
   description: '脚手架 浏览器渲染原理 Github说明书 Webpack 前端面试',
   base: '/frontend-docs/',
   head: [
