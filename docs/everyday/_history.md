@@ -1,4 +1,5 @@
-<div align="right" style="color:#512DA8">2022-09-21 星期三</div> 
+<hr/>
+<div align="right" style="color:#512DA8">day</div> 
 
 > 
 

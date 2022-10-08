@@ -1,6 +1,80 @@
 ---
 title: 2022-09
 ---
+<div align="right" style="color:#512DA8">day10</div> 
+
+> 很多时候，人的勇敢来自于没有选择。
+
+<details>
+<summary><b>2022-09-30</b></summary>
+
+<p style="color:blue">1. get请求传参长度的误区 【JS】</p>
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+误区:我们经常说get请求参数的大小存在限制，而post请求的参数大小是无限制的。  
+实际上HTTP协议从未规定GET/POST的请求长度限制是多少。对get请求参数的限制是来源与Web浏览器，浏览器限制了url的长度，为了明确这个概念我们必须再次强调下面几点： 
+- HTTP协议未规定GET和POST的长度限制 
+- GET的最大长度显示是因为浏览器限制了URL的长度  
+- 不同浏览器 限制的最大长度不一样：若支持IE最大长度为2083byte，若只支持Chrome，最大长度为8182byte
+
+</p>
+</details>
+
+<p style="color:blue">2. mouseover和mouseenter的区别 【】</p>
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+- mouseover：当鼠标移入元素或其子元素都会触发事件，所以有一个重复触发，冒泡的过程，对应的移除事件是mouseout。 
+- mouseenter：当鼠标移除元素本身(不包含元素的子元素)会触发事件，也就是不会冒泡，对应的移除事件是mouseleave
+
+</p>
+</details>
+
+<p style="color:blue">3. 使元素消失的方法有哪些？【CSS】</p>
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+- opacity:0 该元素被隐藏了，但不会改变页面布局，且若该元素绑定了事件，还会继续触发。  
+- visibility:hidden 该元素隐藏，但不会改变页面布局，若该元素绑定了事件，不会触发。  
+- display:none 该元素隐藏，且会改变页面布局，在页面中将该元素删除掉
+
+</p>
+</details>
+
+<p style="color:blue">4. script标签中defer和async的区别 【JS】 </p>
+
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+- 多个带async属性的标签，不能保证加载的顺序；多个带defer属性的标签，按照加载顺序执行; 
+- async属性，表示后续文档的加载和执行与js脚本的加载和执行是并行进行的，即异步执行；   
+- defer属性，加载后续文档的过程和js脚本的加载(此时仅加载不执行)是并行进行的(异步)，js脚本需要等到文档所有元素解析完成之后才执行，DOMContentLoaded事件触发执行之前。
+
+</p>
+</details>
+
+<p style="color:blue">5. 强缓存和协商缓存 【HTML】</p>
+
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+- 强缓存是从缓存中读取的，状态码是200(from cache)，不会发送请求,直接从缓存中存取  
+- 协商缓存从缓存中读取的，状态码是304(not modified),会发送请求，通过服务器来告知缓存是否可用
+
+- 强缓存相关字段有：expires、cache-control.],若同时存在，cache-control优先级高于expires 
+- 协商缓存相关字段有：Last-modified/If Modified Since,Etag/If None Match
+
+</p>
+</details>
+</details>
+
+<hr/>
 <div align="right" style="color:#512DA8">day9</div> 
 
 >  所有值得做的事情，做得一团糟也值得做，因为做得糟总比不做好。
@@ -104,6 +178,7 @@ printing为生成阶段，通过babel-generator生成对应的代码。
 
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day8</div>
 
 > The things one is most proud of are often the hardest things to do. You must not doubt it.
@@ -264,7 +339,7 @@ xml和json都是数据传输的载体，并且具有跨平台跨语言的特性�
 
 </details>
 
-
+<hr/>
 <div align="right" style="color:#512DA8">day7</div> 
 
 > 你学不会的东西，老天爷会让你一遍一遍经历。如果一个人有明显的缺点，比如不细心、马虎，Ta会在未来的人生经历中一次次犯错，一次次体会因为马虎带来的失败，直到他改正这个缺点为止。
@@ -374,6 +449,7 @@ Array.prototype.slice.call(arguments);
 </details>
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day6</div> 
 
 > One of the best lessons I've learned on the Internet is never copy and paste code you didn't write. If you have to copy, just type it word for word and force yourself to think about what the code actually means.
@@ -467,6 +543,7 @@ iOS上浏览器怎么区分用户是只要单击操作还是要双击进行缩�
 
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day5</div> 
 
 > 你之所以会活的不开心，是因为你太喜欢回头看了，人的这一生很长，不要站在现在的角度去批判过去的自己，除了生病之外，我们所有能感受到的痛苦，都不是真实存在的，而是那么多年的价值观所带来的的，所以即使人生能够重来，相信以当时的心智和当时的阅历，我们还是会做出同样的选择，所以人一定要学会跟自己和解，去接受每一个阶段的自己，无论好坏，这都是你的人生。
@@ -580,6 +657,7 @@ JSON.parse()
 
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day4</div> 
 
 > 想起来全是问题，做起来才有答案。
@@ -668,6 +746,7 @@ JSON.parse()
 
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day3</div> 
 
 > 无所畏惧（fearless）不是没有恐惧；而是你依然心怀恐惧，但无论如何都决定要跳进去。
@@ -768,6 +847,7 @@ transform: none | rotate | scale | skew | translate | matrix;
 </details>
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day2</div> 
 
 > 人心中的成见是一座大山，任你怎么努力都休想搬动，一生中能改变命运的机会可不多呀。
@@ -860,6 +940,7 @@ function doSomething(val) {
 </p>
 </details>
 
+<hr/>
 <div align="right" style="color:#512DA8">day1</div> 
 
 > 人生就是这样，求上得中求中得下，求下而不得。职场黄金期，没几年的，你年轻，要跟优秀的人一起做事，学会他们的工作方法，待人处事，不要一直想着要好好做，就单纯的好好去做。所有的学习，最开始都像是在照镜子，无非是学到了，再换一个老师，换一面镜子，直到有一天你发现，新的镜子里是你自己，你就有你自己的方法了，你就可以做别人的镜子了。  
