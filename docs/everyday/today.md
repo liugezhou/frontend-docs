@@ -2,124 +2,84 @@
 title: Today
 ---
 
-<div align="right" style="color:#512DA8">2022-10-08 星期六</div>
+<div align="right" style="color:#512DA8">2022-10-09 星期日</div> 
 
-> 你从自己的一次失败中学到的东西，比阅读一千个成功故事学到的更多。
+> Life was a box of chocolates, you never know what you're gonna get.
 
 <hr/>
-<p style="color:blue">1. transform与transition属性都有哪些 【CSS】</p>
+<p style="color:blue">1. 浏览器在生成页面的时候，会生成那两颗树？【Web】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-**transform**
-
-transform 允许缩放、旋转、平移、倾斜等。
-- matrix(a1,a2,a3,a4,a5,a6) 定义 2D 转换
-- translate(x,y) x 轴与 y 轴的 2D 平移转换
-- scale(x,y) x 轴与 y 轴缩放的 2D 转换
-- rotate(angle) x 轴与 y 轴 2D 旋转角度 转换
-- skew(x-angle,y-angle) x 轴与 y 轴的 2D 倾斜转换
-
-**transition**
-
-- transition 属性是 `transition-property`、`transition-duration`、`transition-timing-function`、`transition-delay`四个属性的简写属性。
-
-1.  `transition-property`:用来设置元素中参与过渡的属性名称 ,语法格式：`transition-property:none | all | property `
-    - none:没有属性参与过渡
-    - all:所有属性参与过渡
-    - property:CSS 属性过渡列表，多个属性使用逗号分隔
-
-2. `transition-duration`:用来设置过渡需要花费的时间 语法格式:`transition-duration:time `  
-    多个属性之间可用逗号进行分割:`transition-duration:1s,2s,3s;`
-
-3. `transition-timing-function`:用来设置过渡动画的类型
-  - linear:匀速
-  - ease:慢到快再到慢
-  - ease-in:慢速开始过渡
-  - ease-out:慢速结束过渡
-
-4. `transition-delay`: 设置过渡效果何时开始，即等待的时间
+构造两棵树，DOM 树和 CSSOM 规则树，
+当浏览器接收到服务器相应来的 HTML 文档后，会遍历文档节点，生成 DOM 树，
+CSSOM 规则树由浏览器解析 CSS 文件生成。
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">2. animation的属性 【CSS】</p>
+<p style="color:blue">2. csrf 和 xss 的网络攻击及防范 【Web】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-1. `@keyframes`规则 
-```CSS
-@keyframes animationName{
-  from {}
-  percentage{}
-  to{}
-}
-```
-- `animationName`:动画名称 
-- `from`:定义动画的开头 0%
-- `percentage`:动画各个阶段，为百分比值，可添加多个 
-- `to`:动画结尾，100%
+CSRF：跨站请求伪造，可以理解为攻击者盗用了用户的身份，以用户的名义发送了恶意请求，比如用户登录了一个网站后，立刻在另一个tab页面访问量攻击者用来制造攻击的网站，这个网站要求访问刚刚登陆的网站，并发送了一个恶意请求，这时候CSRF 就产生了。  
+比如这个制造攻击的网站使用一张图片，但是这种图片的链接却是可以修改数据库的，这时候攻击者就可以以用户的名义操作这个数据库，防御方式的话：使用验证码，检查 https 头部的 refer，使用 token。
 
-2. 动画应用 
-通过`1`创建好动画后，需要将动画应用指定到HTML元素，CSS提供的动画属性有：  
-- `animation-name`:设置需要绑定到元素的动画名称 
-- `animation-duration`:动画开始到完成所花费的时间 
-- `animation-timing-function`:动画速度曲线，默认为ease  
-- `animation-fill-mode`:设置当前动画不播放时的状态(forwards为最后一个关键帧样式，backwards为第一个关键中样式，both为两者)  
-- `animation-delay`:动画开始执行的延迟时间  
-- `animation-iteration-count`:设置动画的播放次数,infinite表示无限次播放，默认值为1
-- `animation-play-state`:设置动画是正在运行还是暂停，默认是running  
-- `animation`:动画的所有属性
-
-</p>
-</details>
-
-
-<hr/>
-<p style="color:blue">3. 什么是原生ESM? 【JS】 </p>
-
-<details>
-<summary><b>参考答案</b></summary>
-<p>
-
-- JavaScript模块,即提供一种将 JavaScript 程序拆分为可按需导入的单独模块的机制 
-- 最新的浏览器开始原生支持模块功能了-- 这会是一个好事情 — 浏览器能够最优化加载模块，使它比使用库更有效率：使用库通常需要做额外的客户端处理。 
-- 关键词:`import` `export`  
-- 根据[MDN JS ESM](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Modules)体验。
-
-</p>
-</details>
-
-
-<hr/>
-<p style="color:blue">4. Vite的解决思路是基于什么？ </p>
-<details>
-<summary><b>参考答案</b></summary>
-<p>
-
-- Vite是基于`浏览器开始原生支持ES模块，且越来越多的JS工具使用编译性语言编写`  
-- Vite针对缓慢的服务器启动，解决思路是：`基于打包器方式的启动是必须优先抓取并构建整个应用，然后才能提供服务，而Vite是在一开始将应用中的模块分为依赖和源码两项，改进开发服务器启动慢的问题`  
-  - 依赖使用esbuild预构建依赖。
-  - 源码以原生ESM方式提供(浏览器接管了打包程序的部分工作)。
-  - 在 Vite 中，HMR 是在原生 ESM 上执行的。
+XSS：跨站脚本攻击，是说攻击者通过注入恶意的脚本，在用户浏览网页的时候进行攻击，比如获取 cookie，或者其他用户身份信息，可以分为存储型和反射型，存储型是攻击者输入一些数据并且存储到了数据库中，其他浏览者看到的时候进行攻击，反射型的话不存储在数据库中，往往表现为将攻击代码放在 url 地址的请求参数中，防御的话为 cookie 设置 httpOnly 属性，对用户的输入进行检查，进行特殊字符过滤。
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">5. Webpack的tree-shaking是什么，需要注意哪些问题，如何配置? </p>
+<p style="color:blue">3. cookie 和 session 的区别 【JS】 </p>
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+1. cookie 数据存放在客户的浏览器上，session 数据放在服务器上。
+2. cookie 不是很安全，别人可以分析存放在本地的 COOKIE 并进行 COOKIE 欺 骗
+考虑到安全应当使用 session。
+3. session 会在一定时间内保存在服务器上。当访问增多，会比较占用你服务
+器的性能
+考虑到减轻服务器性能方面，应当使用 COOKIE。
+4. 单个 cookie 保存的数据不能超过 4K，很多浏览器都限制一个站点最多保存
+20 个 cookie。
+
+</p>
+</details>
+
+<hr/>
+<p style="color:blue">4. overflow 的原理 【CSS】 </p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 一个js文件中有a和b两个方法，只用到了a方法，b方法没有用到，tree-shaking就是解决打包的时候不去打包没用到的b方法。 
-- Tree-shaking只支持ES Module(import,export),不支持require  
-- 生产环境Tree-shaking默认配置好了，不需要对optimization配置,但仍需要对package.json中的sideEffects配置。  
-- 开发环境默认没有配置tree-shaking，需要在webpack.config.js配置文件中添加`optimization:{usedExports:true}`,如果引入第三方资源，需要在`package.json`中配置`sideEffects:false`
+要讲清楚这个解决方案的原理，首先需要了解块格式化上下文
+> A block formatting  context is a part of a visual CSS rendering of a Web page. It is the region in which the layout of block boxes occurs and in which floats interact with each other.
+
+翻译过来就是:块格式化上下文是 CSS 可视化渲染的一部分，它是一块区域，规定了内部块盒 的渲染方式，以及浮动相互之间的影响关系   
+
+当元素设置了 overflow 样式且值部位 visible 时，该元素就构建了一个 BFC，BFC 在计算高度时，内部浮动元素的高度也要计算在内，也就是说技术 BFC 区域内只有一个 浮动元素，BFC 的高度也不会发生塌缩，所以达到了清除浮动的目的。  
+
+</p>
+</details>
+
+<hr/>
+<p style="color:blue">5. box-sizing 的语法和基本用处 【CSS】</p>
+
+<details>
+<summary><b>参考答案</b></summary>
+<p>
+
+box-sizing 规定两个并排的带边框的框，语法为 box-sizing：content-box/border-box/inherit
+
+- content-box：宽度和高度分别应用到元素的内容框，在宽度和高度之外绘制元素的内边距和边框
+- border-box：为元素设定的宽度和高度决定了元素的边框盒，
+- inherit：继承父元素的 box-sizing
 
 </p>
 </details>

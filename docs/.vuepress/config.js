@@ -45,7 +45,7 @@ module.exports = {
         '33',
       ],
       '/notes/': ['before', 'vim'],
-      '/everyday/': ['today', 'history'],
+      '/everyday/': ['today', '202210','202209'],
     },
     nav: [
       { text: '首页', link: '/' },
