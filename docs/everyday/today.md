@@ -2,99 +2,108 @@
 title: Today
 ---
 
-<div align="right" style="color:#512DA8">2022-10-10 星期一</div> 
+<div align="right" style="color:#512DA8">2022-10-11 星期二</div> 
 
-> 平庸将你的心灵烘干到没有一丝水分，然后荣光才会拨动你心灵最深处的弦。
+> 我们曾经那么好，现在却连声问候，都怕是打扰。  
 
 <hr/>
-<p style="color:blue">1. Webpack中的sourceMap配置？ 【Webpack】</p>
+<p style="color:blue">1. Vue3.0 里为什么要用 Proxy API 替代 defineProperty API？ 【Vue】</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 项目打包后，如果关闭 sourceMap 的配置，在浏览器打开项目后，看到的 js 代码为打包后的代码，不利于查找代码错误。
-- sourceMap 是一个映射关系，他可以知道在 dist 打包后的 main.js 错误的代码对应在未经打包的代码的位置。
+响应式优化。
+- 1. defineProperty API 的局限性最大原因是它只能针对单例属性做监听。
+    Vue2.x 中的响应式实现正是基于 defineProperty 中的 descriptor，对 data 中的属性做了遍历 + 递归，为每个属性设置了 getter、setter。
+    这也就是为什么 Vue 只能对 data 中预定义过的属性做出响应的原因，在 Vue 中使用下标的方式直接修改属性的值或者添加一个预先不存在的对象属性是无法做到 setter监听的，这是 defineProperty 的局限性。
 
-配置项为：
-- devtool:'source-map'---会在 dist 目录下生成一个.map 的映射文件。
-- 如果为'inline-source-map'，则不会生成.map 文件，直接在原 main.js 文见中添加注释以映射(位置在底部)。
-- 如果为'cheap-inline-source-map' :与 inline 不同，只告诉是哪行代码出错，效率会高一些。
-- 如果为"cheap-module-source-map':不管是业务代码，但是依赖的第三方模块，都会显示出出错的地方。
-- eval 是打包效率最高的方式。
-- 如果是开发环境，建议使用“cheap-module-eval-source-map'这种方式。如果是生产环境，一般不用设置 devtool 的配置。如果要配置，推荐使用"cheap-module-source-map"。
+- 2. Proxy API 的监听是针对一个对象的，那么对这个对象的所有操作会进入监听操作， 这就完全可以代理所有属性，将会带来很大的性能提升和更优的代码。
+    Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界对该对象的访问，都必须先通过这层拦截，因此提供了一种机制，可以对外界的访问进行过滤和改写。
+- 3. 响应式是惰性的
+    在 Vue.js 2.x 中，对于一个深层属性嵌套的对象，要劫持它内部深层次的变化，就需要递归遍历这个对象，执行 Object.defineProperty 把每一层对象数据都变成响应式的，这无疑会有很大的性能消耗。 
+    在 Vue.js 3.0 中，使用 Proxy API 并不能监听到对象内部深层次的属性变化，因此它的处理方式是在 getter 中去递归响应式，这样的好处是真正访问到的内部属性才会变成响应式，简单的可以说是按需实现响应式，减少性能消耗。
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">2.JS编译解析原理以及AST的理解 【JS】</p>
+<p style="color:blue">2. git stash的用法 【Git】 </p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-JS的编译原理简单说就是先对源代码进行分词(分解)转换成一个个有意义的代码块，然后将这些有意义的代码块生成抽象语法树AST，最后对AST进行操作、解析成可执行代码进行执行。 
-
-1. 首先这个AST也就是抽象语法树，是 Abstract Syntax Tree的缩写。 
-2. AST生成的主要就是两个步骤：词法分析和语法分析。
-- 词法分析：就是读取源代码，安装预定的规则(比如遇到空格、括号、换行等)将代码合成一个个的标识token。 
-- 语法分析：就是将词法分析出来的数组转换成树的表达形式，并同时验证代码语法是否有误。
-3. 然后这个时候就生成一颗抽象语法树，它定义了代码的结构。通过操纵这颗树，我们可以精确定位到声明语句、赋值语句、运算语句等等，实现对代码的分析、优化、变更等操作。
-
-很多工具和库的核心都是AST,像webpack、lint、babel等，一般都是分三个阶段运行代码：解析（parsing），转译（transforming），生成（generation)
+1. 把未提交的修改（暂存和非暂存）保存起来   
+    **git stash save "test-cmd-stash" -u[存放未跟踪的文件]**
+2. 查看现有stash    
+    **git stash list**
+3. 查看指定stash的修改  
+    **git stash show [stash@{1}-不指定显示最新的]  [-u 显示未跟踪文件]**
+4. 恢复之前的进度继续开发新功能 
+   **git stash pop** [stash@{1}]
+5. 移除stash    
+   **git stash drop [stash_id(不指定删除最新的)]**
+6. 删除所有stash    
+   **git stash clear**
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">3.node是单线程，为什么能处理高并发 【JS】 </p>
+<p style="color:blue">3. item2 (终端) 常用的快捷键记录</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-事件驱动。  
-- 每个Node.js进程只有一个主线程在执行程序代码，行成一个执行栈 
-- 主线程之外还维护了一个"事件队列"(Event Queue)，当用户的网络请求或者其他异步操作到来时，node都会放到事件队列中去，此时不会立即执行这个异步任务，代码也不会阻塞，会继续往下走，直到主线程代码执行完毕。  
-- 主线程代码执行完毕后，通过事件循环机制(Event Loop),到事件队列的开头取出第一个事件去执行，执行完毕后主线程不断检查事件队列中是否有未执行事件，若有继续执行，直到事件队列中所有事件执行完毕。 
-- 主线程不断重复上面的第三步  
+描述|命令
+--|----|
+新建标签|command + t|
+切换标签|command + 数字|
+切换全屏|command + enter|
+垂直分屏|command + d|
+删除文本到末尾|ctrl + k |
+清除当前行 | ctrl + u|
+清除当前屏幕 | ctrl + l|
+到行首 |ctrl + a|
+到行尾 |ctrl + e|
+本地拷贝文件到服务器|scp /Users/opload.js [root@x.x.x.x](mailto:root@x.x.x.x):/data/|
+多级目录创建|mkdir -p dir/dir1/dir2|
+文件拷贝 |cp -r /test/demo.js /data/demo.js|
+文件移动 |mv /root/jar/demo.jar /data/|
+查看当前文件下所有路径|find . |
+解压文件 |tar -zxvf test.tar.zip -C /data/demo|
+连接服务器 |ssh -p 22 root@ip_address|
+系统信息 |uname -a|
+本地地址 |ifconfig|
+查看服务器端口占用|netstat -tunpl|
 
-Node之所以单线程可以处理高并发的原因，在于libuv层的事件循环机制，和底层线程池的实现，在事件循环机制上，新版本的node和浏览器类似。
+
+
+
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">4. Promise和async await是解决什么问题的，为什么存在两种方式？【JS】 </p>
+<p style="color:blue">4. 新建正则实例的两种方式 【Reg </p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 首先，Promise的出现是为了解决异步产生的回调地狱，使得开发人员用新的方式来编写程序。 
-- 而Promise出现引出的新问题是如果有多个Promise要执行，虽然Promise.all可以解决，但是如果存在Promise先后的执行顺序，Promise就不能很好的解决了。 
-- 然后 async await出现，允许异步程序用同步代码的方式写程序，也就是说async await解决了Promise产生的一些问题，且是建立在Promise的基础上实现的，返回的仍然是一个Promise。
+1. let regex = /xyz/;
+2. let regex = new RegExp('xyz','i') 
+
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">5. TypeScript 如何设计 Class 的声明？ 【TS】</p>
+<p style="color:blue">5. 浏览器对象location.reload()参数作用 【BOM】</p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-在声明类的时候，一般类中都会包含:构造函数、对构造函数中的属性进行类型声明、类中的方法。
-```javascript
-class Greeter {
-   greeting: string;
-   constructor(message: string) {
-       this.greeting = message;
-   }
-   greet(): string{
-       return "Hello, " + this.greeting;
-   }
-}
-let greeter = new Greeter("world");
-```
+location.reload():传入true，则重新加载本页面且scrollTop为0,传为false，则会回到当前位置。
 
 </p>
 </details>
