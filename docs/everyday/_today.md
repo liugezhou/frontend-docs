@@ -6,7 +6,6 @@ title: Today
 
 > 
 
-<hr/>
 <p style="color:blue">1.</p>
 <details>
 <summary><b>参考答案</b></summary>

@@ -2,92 +2,123 @@
 title: Today
 ---
 
-<div align="right" style="color:#512DA8">2022-10-13 星期四</div> 
+<div align="right" style="color:#512DA8">2022-10-14 星期五</div> 
 
-> 不管前方的路有多苦，只要走的方向正确，不管多么崎岖不平，都比站在原地更接近幸福。
+> 生命在于折腾。做成一件事情时，不要特别放大自己；事情没做好，也不用气馁。 一定要相信我是牛逼的，这件事情不行没有关系，我接着做下一个，我死之前一直干，早晚能成。
 
-<hr/>
-<p style="color:blue">1. Jest常用的expect方法有哪些？ 【Jest】</p>
+<p style="color:blue">1. 进行SEO优化需要注意什么？</p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- expect(a).toBe(b) 
-- expect(a).toEqual(b) 
-- expect(a).not.toBe(b)
-- expect(a).toBeNull(b)
-- expect(a).toBeUndefined()
-- expect(a).toBeTruthy()
-- expect(a).toBeFalsy()
-- expect(a).toContain(b)
+- 合理的title、description、 keywords:搜索对着三项的权重逐个减小，title强调重点，description把页面内容高度概括(不可过分堆砌关键词)、keywords列出重要关键词。
+- 重要内容不用js输出，爬虫不会执行js获取内容  
+- 非装饰性图片必须加alt
+- 提高网站速度(网站速度是搜索引擎排序的一个重要指标)
+- 谨慎使用display属性
+- 减少使用iframe框架
+- 服务端渲染
+……
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">2. 微信小程序的自动化测试流程步骤  【miniProgram】</p>
+<p style="color:blue">2. React的有哪些限制以及JSX是什么 【React】 </p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
-小程序官方的`Automator`模块,提供了启动及连接开发者工具的方法。    
 
-通过connect方法连接到开发工具后，通过 `miniProgram`、`Page` 、`Element`三个模块进行自动化测试。
+React的限制如下：
 
-[简单总结见这里](https://blog.liugezhou.online/032-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/)
+- React 只是一个库，而不是一个完整的框架
+- 它的库非常庞大，需要时间来理解
+- 新手程序员可能很难理解
+- 编码变得复杂，因为它使用内联模板和 JSX
+
+JSX
+- JSX 是J avaScript XML 的简写。是 React 使用的一种文件，它利用 JavaScript 的表现力和类似 HTML 的模板语法。这使得 HTML 文件非常容易理解。此文件能使应用非常可靠，并能够提高其性能
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">3. rgba和opacity的透明效果有什么不同？【CSS】</p>
+<p style="color:blue">3.babel插件与预设的理解 【babel】 </p>
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-1. 定义
-- opacity：取值0-1，0表示完全透明，1表示完全不透明；
-- rgba：R表示红色，G表示绿色，B表示蓝色，A表示透明度，取值0-1，0表示完全透明，1表示完全不透明；
-2. 区别： 
-- opacity作用于元素以及元素内所有内容.    
-- rgba（）只作用于元素的颜色或者背景图；    
-即opacity会继承父元素的opacity属性，而RGBA设置的元素的后代元素不会继承其属性。
+- babel的核心是插件，babel的所有工作都是由插件完成的。
+- babel预设是指：将一系列的常用插件集中在一个篮子里`babel/preset-env`,这样就不用单独的去一个一个安装babel提高的必要插件了 。  
+```
+{
+  "plugins": [],
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+```
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">4. js中的BOM和DOM有什么区别？【JS】 </p>
+<p style="color:blue">4. Webpack中loader与plugin的区别，以及如何自定义 【Webpack】 </p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
-javascript是由三部分构成，ECMAScript，DOM和BOM，根据宿主（浏览器）的不同，具体的表现形式也不尽相同
 
-### BOM是浏览器对象模型 Browser Object Model
-- BOM和浏览器关系密切。是浏览器的内置脚本语言。浏览器的很多东西可以通过JavaScript控制的，例如打开新窗口、打开新选项卡（标签页）、关闭页面，把网页设为主页，或加入收藏夹，等等
-- BOM由于没有标准，不同的浏览器实现同一功能，可以需要不同的实现方式。对于上面说的功能，不同的浏览器的实现功能所需要的JavaScript代码可能不相同。
-- 常用BOM对象:window、Screen、Cookie、XMLHttpRequest、Storage、History、Location、IndexDB、WebWorker等
-### DOM是文档对象模型 Document Object Model
-- DOM和文档有关，这里的文档指的是网页，也就是HTML文档。网页是由服务器发送给客户端浏览器的，无论用什么浏览器，接收到的HTML都是一样的，所以DOM和浏览器无关，它关注的是网页本身的内容。由于和浏览器关系不大，所以标准就好定了。
-- DOM是W3C的标准.
-- DOM的作用是将网页转为一个 JavaScript 对象，从而可以用脚本进行各种操作（比如增删内容）。     
-浏览器会根据 DOM 模型，将结构化文档（比如 HTML 和 XML）解析成一系列的节点，再由这些节点组成一个树状结构（DOM Tree）。所有的节点和最终的树状结构，都有规范的对外接口。       
-DOM 只是一个接口规范，可以用各种语言实现。所以严格地说，DOM 不是 JavaScript 语法的一部分，但是 DOM 操作是 JavaScript 最常见的任务，离开了 DOM，JavaScript 就无法控制网页。
+**区别**
+- loader本身就只是一个函数，在该函数中对接收到的内容进行转换。它是个翻译官，它在modules的rules中配置，内部包含test、loader和options属性。
+- Plugin就是插件，基于事件流。Webpack在运行当中会去广播一些事件，plugin去监听这些事件，然后干活。plugin单独配置，通过构造函数传入参数生效。
+
+**自定义loader**
+- loader本质上是一个函数
+- 因为函数中的this作为上下文会被webpack填充，因此不能将loader设为一个箭头函数
+- 该函数接受一个参数，这个参数是webpack传递给loader的文件源内容
+
+**自定义Plugin**
+- webpack编译会创建两个核心对象：compiler和compilation
+- compiler：包含了webpack环境的所有配置消息，包括options、loader和plugin，以及webpack整个生命周期相关的钩子
+- compilation：作为Plugin内置事件回调函数的参数，包含了当前的模块资源、编译生成资源、变化的文件以及被跟踪依赖的状态信息。当检测到一个文件变化，一次新的compilation将被创建
+```Javascript
+// 导出一个函数，其中source为webpack传递给loader的输入参数--文件源内容
+module.exports = function(source){
+  const content = doSomething2JsString(source);
+  // 如果loader配置了options对象，那么this.query将指向options
+  const options = this.query
+  this.fallback(null,content) //异步
+  return content; //同步
+}
+```
+自定义Plugin，需要遵循的规范是：插件必须是一个函数或是包含apply方法的对象，这样才能访问compiler实例
+```javascript
+class MyPlugin{
+  //Webpack会调用MyPlugin实例的apply方法给插件实例传入compiler对象
+  apply(compiler){
+    // 找到合适的事件钩子，实现自己的插件
+    compiler.hooks.emit.tap('MyPlugin',compilation=>{
+      //do something
+    })
+  }
+}
+```
 
 </p>
 </details>
 
 <hr/>
-<p style="color:blue">5. bind，apply，call三者的区别 【JS】</p>
+<p style="color:blue">5. CSS如何声明变量 【CSS】</p>
 
 <details>
 <summary><b>参考答案</b></summary>
 <p>
 
-- 首先，bind，call，apply的作用都是用来改变this指向的。 
-- apply方法接收两个参数，第一个参数是this的指向，第二个参数是函数接收的参数，已数组形式传入，且当第一个参数为null、undefined的时候，this默认指向window对象  
-- call方法接收的第一个参数也是this的指向，后面传入的是一个参数列表，其他与apply相同。 
-- bind和call方法相似，知识它改变this的指向后不会立即执行，而是返回一个永久改变this指向的函数。
+- 变量声明的时候变量名前面要加两根连接线 `--`
+- var()函数用于读取变量
+
+[更多内容](https://www.ruanyifeng.com/blog/2017/05/css-variables.html)
 
 </p>
 </details>

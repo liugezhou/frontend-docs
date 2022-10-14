@@ -1,6 +1,6 @@
 module.exports = {
   title: '今日前端',
-  description: '脚手架 浏览器渲染原理 Github说明书 Webpack 前端面试',
+  description: '前端面试总结',
   base: '/frontend-docs/',
   head: [
     [
