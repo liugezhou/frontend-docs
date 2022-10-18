@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Webpack必会经典 | 今日前端</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <script>
+      var _hmt = _hmt || [];
+      (function() {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?67c6532f7fb6859ef32c9cddf2b83c37";
+        var s = document.getElementsByTagName("script")[0]; 
+        s.parentNode.insertBefore(hm, s);
+      })();
+      </script>
+      </script>
+    <meta name="description" content="webpack-demo">
+    
+    <link rel="preload" href="/frontend-docs/assets/css/0.styles.d8b48633.css" as="style"><link rel="preload" href="/frontend-docs/assets/js/app.9f39f6f2.js" as="script"><link rel="preload" href="/frontend-docs/assets/js/2.66dbf3eb.js" as="script"><link rel="preload" href="/frontend-docs/assets/js/11.55773e38.js" as="script"><link rel="prefetch" href="/frontend-docs/assets/js/10.ec8f2734.js"><link rel="prefetch" href="/frontend-docs/assets/js/12.f1897ef3.js"><link rel="prefetch" href="/frontend-docs/assets/js/13.555e73ff.js"><link rel="prefetch" href="/frontend-docs/assets/js/14.3be6639d.js"><link rel="prefetch" href="/frontend-docs/assets/js/15.33ac297e.js"><link rel="prefetch" href="/frontend-docs/assets/js/16.b31f0ef0.js"><link rel="prefetch" href="/frontend-docs/assets/js/17.612f86bf.js"><link rel="prefetch" href="/frontend-docs/assets/js/18.4749b891.js"><link rel="prefetch" href="/frontend-docs/assets/js/19.d5aff8ec.js"><link rel="prefetch" href="/frontend-docs/assets/js/20.069ba11c.js"><link rel="prefetch" href="/frontend-docs/assets/js/21.f4619665.js"><link rel="prefetch" href="/frontend-docs/assets/js/22.1efbe51d.js"><link rel="prefetch" href="/frontend-docs/assets/js/23.38f8e65c.js"><link rel="prefetch" href="/frontend-docs/assets/js/24.e1ba9527.js"><link rel="prefetch" href="/frontend-docs/assets/js/25.f654a3ce.js"><link rel="prefetch" href="/frontend-docs/assets/js/26.e57c6dd9.js"><link rel="prefetch" href="/frontend-docs/assets/js/27.9d37c572.js"><link rel="prefetch" href="/frontend-docs/assets/js/28.6a99db69.js"><link rel="prefetch" href="/frontend-docs/assets/js/29.d6e3975f.js"><link rel="prefetch" href="/frontend-docs/assets/js/3.3a807509.js"><link rel="prefetch" href="/frontend-docs/assets/js/30.06cd233b.js"><link rel="prefetch" href="/frontend-docs/assets/js/4.09cb46a0.js"><link rel="prefetch" href="/frontend-docs/assets/js/5.8865fc04.js"><link rel="prefetch" href="/frontend-docs/assets/js/6.461cca72.js"><link rel="prefetch" href="/frontend-docs/assets/js/7.216e23b6.js"><link rel="prefetch" href="/frontend-docs/assets/js/8.88ad4386.js"><link rel="prefetch" href="/frontend-docs/assets/js/9.953d1eea.js">
+    <link rel="stylesheet" href="/frontend-docs/assets/css/0.styles.d8b48633.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/frontend-docs/" class="home-link router-link-active"><img src="/frontend-docs/time.png" alt="今日前端" class="logo"> <span class="site-name can-hide">今日前端</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/frontend-docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/frontend-docs/everyday/today.html" class="nav-link">
+  今日前端
+</a></div><div class="nav-item"><a href="/frontend-docs/web/before.html" class="nav-link">
+  前端脚手架
+</a></div><div class="nav-item"><a href="/frontend-docs/notes/before.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  前端笔记
+</a></div><div class="nav-item"><a href="https://blog.liugezhou.online/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  浏览器渲染原理
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://blog.liugezhou.online" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  他的博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/liugezhou/frontend-docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/frontend-docs/" class="nav-link">
+  首页
+</a></div><div class="nav-item"><a href="/frontend-docs/everyday/today.html" class="nav-link">
+  今日前端
+</a></div><div class="nav-item"><a href="/frontend-docs/web/before.html" class="nav-link">
+  前端脚手架
+</a></div><div class="nav-item"><a href="/frontend-docs/notes/before.html" aria-current="page" class="nav-link router-link-exact-active router-link-active">
+  前端笔记
+</a></div><div class="nav-item"><a href="https://blog.liugezhou.online/categories/%E6%B5%8F%E8%A7%88%E5%99%A8%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  浏览器渲染原理
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://blog.liugezhou.online" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  他的博客
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <a href="https://github.com/liugezhou/frontend-docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    Github
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><a href="/frontend-docs/notes/before.html" aria-current="page" class="active sidebar-link">Webpack必会经典</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/frontend-docs/notes/vim.html" class="sidebar-link">vim全基础</a></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><p>仓库示例代码地址：<a href="https://github.com/liugezhou/webpack-demo" target="_blank" rel="noopener noreferrer">https://github.com/liugezhou/webpack-demo<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="目录结构"><a href="#目录结构" class="header-anchor">#</a> 目录结构</h3> <div class="language- extra-class"><pre class="language-text"><code>|-- webpack-demo
+    |-- .babelrc
+    |-- .eslintrc.js
+    |-- .gitignore
+    |-- index.html
+    |-- package-lock.json
+    |-- package.json
+    |-- postcss.config.js
+    |-- readme.md
+    |-- server.js
+    |-- .vscode
+    |   |-- settings.json
+    |-- build
+    |   |-- webpack.base.js
+    |   |-- webpack.dev.js
+    |   |-- webpack.prod.js
+    |-- src
+    |   |-- createAvatar.js
+    |   |-- img.png
+    |   |-- index.js
+    |   |-- index.scss
+    |   |-- font
+    |       |-- iconfont.eot
+    |       |-- iconfont.svg
+    |       |-- iconfont.ttf
+    |       |-- iconfont.woff
+    |-- src_HMR
+    |   |-- counter.js
+    |   |-- index.js
+    |   |-- number.js
+    |   |-- style.css
+    |-- src_babel
+    |   |-- index.js
+    |-- src_css
+    |   |-- index.js
+    |   |-- style.css
+    |   |-- style1.css
+    |-- src_devserver
+    |   |-- home.js
+    |   |-- index.js
+    |   |-- list.js
+    |-- src_env
+    |   |-- webpack.base.js
+    |   |-- webpack.dev.js
+    |   |-- webpack.prod.js
+    |-- src_lazy
+    |   |-- index.js
+    |-- src_pwa
+    |   |-- index.js
+    |-- src_react
+    |   |-- .babelrc
+    |   |-- index.js
+    |-- src_shaking
+    |   |-- index.js
+    |   |-- math.js
+    |-- src_shimming
+    |   |-- index.js
+    |   |-- jquery.ui.js
+    |-- src_split
+        |-- code_splitting.js
+        |-- index.js
+        |-- test.js
+</code></pre></div><h3 id="初识-webpack"><a href="#初识-webpack" class="header-anchor">#</a> 初识 webpack</h3> <ul><li>webpack is a module bundler.</li> <li>webpack 核心定义是一个模块打包工具。</li> <li>webpack module：ES Module、CommonJS、CMD、AMD</li></ul> <h3 id="搭建-webpack-环境"><a href="#搭建-webpack-环境" class="header-anchor">#</a> 搭建 webpack 环境</h3> <ul><li>webpack 本质上是由 node 实现的。</li> <li>不推荐全局安装 webpack</li> <li>查看所有的 webpack 历史版本：<code>npm view webpack versions</code></li> <li>查看最新 webpack 版本：<code>npm view webpack version</code></li> <li>本地项目安装完成后，查看 webpack 的版本：<code>npx webpack -v</code></li> <li>假如本地全局安装了 webpack，想看 webpack 安装目录：<code>npm ls webpack -g</code></li></ul> <h3 id="webpack-的配置"><a href="#webpack-的配置" class="header-anchor">#</a> webpack 的配置</h3> <ul><li>mode:production(代码压缩),development(代码未压缩)</li> <li>entry:打包进入文件</li> <li>output: 打包输出路径</li> <li>以某文件为配置文件打包：npx webpack --config webpackConfig.js</li> <li>loader 是什么：打包方案(对于特定文件的打包处理:比如 file-loader 可以对图片、字体等静态资源文件进行打包) ,loader 的执行顺序是由下往上，由左至右。</li> <li>常用文件 loader：file-loader、url-loader</li> <li>常用样式 loader：postcss-loader(autoprefixer)、sass-loader、css-loader、style-loader</li> <li>module:一些 loader 规则（比如使用 file-loader 的时候，想让图片的打包名字不改变，可以在 module 的 rules 中配置 use 属性的 options 属性）</li> <li>plugins: 可以在 webpack 运行到某个时刻的时候，帮你做一些事情 类似与 vue 中的生命周期函数。
+<ul><li>html-webpack-plugin:会在打包结束后自动生成一个 html 文件，并把打包生成的 js 自动引入到这个 html 文件中。</li> <li>clean-webpack-plugin:打包生成 dist 目录下的覆盖(1.0 版本可以正常打包，3.0 报错)。</li></ul></li></ul> <h3 id="打包出的资源-cdn"><a href="#打包出的资源-cdn" class="header-anchor">#</a> 打包出的资源 CDN</h3> <p>打包出的资源 js,css 等一般为本地静态文件，但我们需要将这些文件放到 CDN 中，然后在打包出的 index.html 引用，我们可以这么做：</p> <ul><li>在 output 中配置，publicPath:'https://cdn.com'</li></ul> <h3 id="sourcemap-的配置"><a href="#sourcemap-的配置" class="header-anchor">#</a> sourceMap 的配置</h3> <ul><li>项目打包后，如果关闭 sourceMap 的配置，在浏览器打开项目后，看到的 js 代码为打包后的代码，不利于查找代码错误。</li> <li>sourceMap 是一个映射关系，他可以知道在 dist 打包后的 main.js 错误的代码对应在未经打包的代码的位置。</li> <li>配置项为：</li> <li>devtool:'source-map'---会在 dist 目录下生成一个.map 的映射文件。</li> <li>如果为'inline-source-map'，则不会生成.map 文件，直接在原 main.js 文见中添加注释以映射(位置在底部)。</li> <li>如果为'cheap-inline-source-map' :与 inline 不同，只告诉是哪行代码出错，效率会高一些。</li> <li>如果为&quot;cheap-module-source-map':不管是业务代码，但是依赖的第三方模块，都会显示出出错的地方。</li> <li>eval 是打包效率最高的方式。<br>
+如果是开发环境，建议使用“cheap-module-eval-source-map'这种方式。如果是生产环境，一般不用设置 devtool 的配置。如果要配置，推荐使用&quot;cheap-module-source-map&quot;。</li></ul> <h3 id="使用-webpackdevserver-提升开发效率"><a href="#使用-webpackdevserver-提升开发效率" class="header-anchor">#</a> 使用 WebpackDevServer 提升开发效率</h3> <p>需要依赖的包为：webpack-dev-devserver -D
+配置项说明：</p> <div class="language- extra-class"><pre class="language-text"><code>devServer{
+ contentBase:'./dist',    // 要监听的文件目录
+ open:true,               // 自动打开浏览器窗口
+ port:8000,               // 设置监听端口
+ hot:true,                // 开启热更新
+ proxy:{},                // 代理设置
+}
+</code></pre></div><p>要实现的效果是修改了一个 index.js 文件中的代码，可以不用重新打包，直接去运行 index.html 的文件。要实现这种效果有三种方法：</p> <ol><li>在 package.json 文件中给 script 命令加一个 --watch 的参数。当加入 watch 参数后，会监听文件，如果源文件代码修改，会实时的更新打包。</li> <li>webpack-dev-server（webpack 不自带，需要安装的）:第一次运行脚本的时候，自动打包、打开浏览器、热更新等功能。此外隐藏的一个功能是，webpack-dev-server 会对我们 src 下的文件进行打包，但是没有 dist 目录，是因为将 dist 打包保存至电脑内存。</li> <li>在 node 中直接使用 webpack：通过 express 与 webpack-dev-middleware 手写一个 server.js。</li></ol> <h3 id="hmr-hot-module-replacement-热模块替换"><a href="#hmr-hot-module-replacement-热模块替换" class="header-anchor">#</a> [HMR] hot Module Replacement(热模块替换)</h3> <p>场景：js 动作添加一些模块后，如果修改 css 文件，webpack 会将之前的行为给删除，HMR 就是解决只修改 css 样式，但是不更改行为。</p> <ul><li><p>需要在 devServer 中配置 hot 和 hotOnly</p></li> <li><p>测试环境下需要在 Plugin 中添加热更新的操作：new webpack.HotModuleReplacementPlugin()</p></li> <li><p>本质上实现热更新，是因为在代码中设置了如下配置</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>if(module.hot){
+  module.hot.accept('./some.js',(){
+    // 一些document或其他操作
+  })
+}
+</code></pre></div><ul><li>CSS、Vue 之所以可以直接热更新就是因为，css-loader、vue-loader 中写入了上方的代码逻辑(或者 babel-presets)。</li></ul> <h3 id="使用-babel-处理-es6-语法"><a href="#使用-babel-处理-es6-语法" class="header-anchor">#</a> 使用 Babel 处理 ES6 语法</h3> <ul><li>安装第三方依赖：'babel-loader'、'@babel/core'：babel-loader 只是 webpack 与 babel 的一个沟通桥梁，并不会将 ES6 代码转化为 ES5 代码。</li> <li>继续安装@babel/preset-env，用于将 ES6 代码转为 ES5 代码。</li> <li>配置 webpack.config.js。</li></ul> <div class="language- extra-class"><pre class="language-text"><code> {
+    test: /\.js$/,
+    exclude: /node_modules/,
+    use:[{
+      loader:'babel-loader'
+    },
+    ],
+    options:{
+      presets:[&quot;@babel/preset-env&quot;]
+    }
+  }
+</code></pre></div><p>这个时候就可以将ES6代码转为ES5了，但是只是做到这里还不够，比如转为ES5代码的map等可能在低版本浏览器还是不支持。</p> <ul><li>为了解决低版本依旧不支持哪些代码，继续安装@babel/polyfill(对低版本的一个完善)</li> <li>使用的时候直接在全局引入即可:import '@babel/polyfill'</li> <li>这样存在一个问题，打出的包非常的大，然后解决之：直接加个配置useBuiltIns：usage<br>
+它的含义是当我们在做polyfill填充的时候，加一些低版本不存在的特性的时候，不会把全部加载，只是根据业务代码进行加载。</li></ul> <div class="language-{ extra-class"><pre class="language-text"><code>    test: /\.js$/,
+    exclude: /node_modules/,
+    loader: 'babel-loader',
+    options:{
+      presets: [['@babel/preset-env',{
+        targets: {
+          &quot;chrome&quot;: &quot;67&quot;,
+        },
+        useBuiltIns:'usage'
+      }]]
+    }
+  }
+</code></pre></div><p><strong>tips:</strong> presets中@babel/preset-env中还可以配置target属性，指定最低版本浏览器,以上代码在webpack-config.js中配置演示。<br>
+**特别注意：**在Webpack4 版本中，如果使用.babelrc配置文件配置了@babel/prest-env,且设置了useBuiltIns，那么在业务代码中就不用引入
+@babel/polyfill了。</p> <p>以上为一种babel的配置，代码中如果只写业务代码就够了。
+但并不是所有都适用，比如在开发一些三方类库、组件库的时候、或者一个模块的时候，polyfill注入会污染全局环境。<br>
+而plugin-transform-runtime会以闭包的形式引入变量，不会污染全局变量。<br>
+接下来介绍另一种babel的配置(不用babel-polyfill的方式)</p> <ol><li>安装@babel/plugin-transform-runtime 【】</li> <li>安装 @babel/runtime</li> <li>将上面options内容清空，替换为：</li></ol> <div class="language- extra-class"><pre class="language-text"><code>&quot;plugins&quot;: [
+  [
+    &quot;@babel/plugin-transform-runtime&quot;,
+    {
+      &quot;absoluteRuntime&quot;: false,
+      &quot;corejs&quot;: 2,
+      &quot;helpers&quot;: true,
+      &quot;regenerator&quot;: true,
+      &quot;version&quot;: &quot;7.0.0-beta.0&quot;
+    }
+  ]
+]
+</code></pre></div><ol start="4"><li>由于有关babel的配置项也特别多，于是可以直接在根目录下新建 .babelrc文件，将以上配置内容写入到该文件中：</li> <li>由于上述文件cordjs设置为了2，所以还需要安装<code>@babel/runtime-corejs2</code>这个包。</li></ol> <h3 id="配置react代码的打包-src-react"><a href="#配置react代码的打包-src-react" class="header-anchor">#</a> 配置React代码的打包(src_react)</h3> <ul><li>在babel官网--文档--预设中有 @babel/preset-react这个选项</li> <li>安装@babel/preset-react</li> <li>在.babelrc中配置</li></ul> <div class="language- extra-class"><pre class="language-text"><code>{
+  &quot;presets&quot;: [
+    [&quot;@babel/preset-env&quot;,{
+      &quot;targets&quot;: {
+        &quot;chrome&quot;: &quot;67&quot;
+      },
+      &quot;useBuiltIns&quot;:&quot;usage&quot;
+    }],
+    [&quot;@babel/preset-react&quot;]
+  ]
+}
+</code></pre></div><h3 id="tree-shaking-webpack自带-src-shaking"><a href="#tree-shaking-webpack自带-src-shaking" class="header-anchor">#</a> Tree Shaking-Webpack自带（src_shaking）</h3> <ul><li>Tree Shaking 在 webpack2.0 之后引入。</li> <li>在 math.js 这个模块中有两个方法 add 和 minus，在 index 中只调用 add 方法，去打包的时候，会将 math 中的两个方法均打包，这样做是没有必要，且会使得打包文件变大，Tree Shaking 就是为了解决这个问题的。</li> <li>Tree Shaking <strong>只支持 ES Module</strong>(即 import 这种模块引入，require 这种的不支持)。</li></ul> <p>mode 为 development 环境：</p> <ul><li>默认没有 Tree Shaking 功能。配置的话需要在webpack.config.js配置文件中添加 <code>optimization:{usedExports:true},</code> ，并且如果直接引入第三方资源，如果也不想做 Tree Shaking，需要在 package.json 中配置<code>sideEffects:false</code> <ul><li>（比如业务代码中使用了 polyfill,在其内部并没有导出什么模块，而是在其内部向全局window添加了一些方法(eg window.Promise)，于是如果我们使用了TreeShaking，发现没有导出内容，就会忽略其内容，但这里我们是不可以忽略的，于是为了消除TreeShaking对他的影响，<code>package.json</code>中添加： &quot;sideEffects&quot;:[&quot;@babel/polyfill&quot;],以忽略 Tree Shaking 对其作用）</li></ul></li> <li>在我们 math 这个例子中，并未用到 polyfill , 我们继续在 package.json 中配置： &quot;sideEffects&quot;:false</li> <li>这个时候我们用 webpack 打包，发现打包文件中，minus 这个方法也被打包保留了下来，但是文件中有提示，告知我们只要 add 方法使用了。之所以有代码的保留是因为在开发环境下我们会调试代码，为了使得行行对应。</li></ul> <p>mode 为 production 环境时(开发环境仍会保留代码)：</p> <ul><li>Tree-Shaking 才算真正生效。</li> <li>在 production 环境下，Tree-Shaking 默认已经配置好了，在 webpack 的配置文件下不需要对<code>optimization</code>配置。</li> <li>但是仍然需要对 package.json 中的 sideEffects 进行配置。</li> <li>使用 webpack 打包会发现生成一个.map 的映射文件，且打包文件被压缩，注释去掉、minus 有关的代码也剔除掉了。</li></ul> <h3 id="development-和-production-模式的区分打包"><a href="#development-和-production-模式的区分打包" class="header-anchor">#</a> development 和 production 模式的区分打包</h3> <p>通过前面的学习，我们知道在开发环境与生产环境下，打包方式是有区别。
+为了提高在不同开发模式下进行打包的效率，我们分别新建两个文件:webpack.dev.js 和 webpack.prod.js。这两个文件分别代码不同环境下的 webpack 配置。<br>
+然后在 package.json 文件中的 script 标签页配置两个命令即可：<br>
+'dev':'webpack-dev-server --config webpack-dev.js'<br>
+'build':'webpack --config webpack.prod.js'</p> <p>到这里我们又发现一个问题，dev 与 prod 的配置文件有特别多相同的代码，我们继续优化：<br>
+根目录下新建 webpack.base.js,将 dev 与 prod 相同的代码摘出来放到 base 中去。<br>
+这个时候分别将 dev/pro 的文件与 base 文件进行合并输出配置：需要安装第三方模块：<code>webpack-merge</code> (此文默认安装的时候最新版本是 5.0.8,使用 merge 报错，然后回退使用 4.2.2 版本)<br>
+最后分别在 dev 和 prod 中引入 webpack-merge,通过<code>module.exports = merge(baseConfig, fileConfig)</code>即可。</p> <h3 id="webpack-和-code-splitting-src-split"><a href="#webpack-和-code-splitting-src-split" class="header-anchor">#</a> webpack 和 Code Splitting(src_split)</h3> <p>代码分割与 webpack 无关。</p> <ul><li>这里的代码分割是指对代码进行分割，提高代码执行效率与性能。</li></ul> <p>Demo:</p> <ul><li>安装第三方包：lodash(提供了一些工具方法)。</li> <li>比如通过 entry，将 lodash 打包成一个文件，业务代码打成一个文件。</li></ul> <p>webpack4 可以自动的帮我们做代码分割：</p> <ul><li>第一种同步代码做代码分割：在 webpack.base.js 中配置 optimization:{splitChunks:{chunks:'all'} },此时在开发环境下打包，会看到有一个新的打包文件：vendors~main.js.</li> <li>第二种异步代码做代码分割：异步加载第三方资源(import 异步引入)，无需做任何配置，webpack 会自动帮我们进行代码的分割。</li></ul> <h3 id="lazy-loading-懒加载-chunk-是什么-src-lazy"><a href="#lazy-loading-懒加载-chunk-是什么-src-lazy" class="header-anchor">#</a> Lazy Loading 懒加载，Chunk 是什么？(src_lazy)</h3> <p>懒加载是通过 import 异步加载一个模块，在执行的时候，再去引入。<br>
+路由懒加载等提升页面加载效率。<br>
+业务代码引入第三方资源的懒加载可以通过 async、await。</p> <p>chunk 指的是整个项目完成打包后，dist 下面有几个 js 文件就是指几个 chunk。</p> <h3 id="css-文件的代码分割"><a href="#css-文件的代码分割" class="header-anchor">#</a> CSS 文件的代码分割</h3> <p>webpack 配置文件中的 output 有两个属性：fileName 和 chunkFilename，这两个的区别是：</p> <ul><li>webpack配置中入口文件，打包出来的命名根据output的fileName配置 ，在index.html引入</li> <li>如果是间接模块的js引入，则走chunkFileName这个配置</li></ul> <p>CSS 文件代码分割要使用在生产环境中<br>
+在测试环境下，<code>(src-css)</code>我们看到并没有讲css文件单独打一个包，如果我们需要讲css文件也单独打一个包，那么：</p> <ul><li>需要安装<code>mini-css-extract-plugin</code>插件。</li> <li>使用<code>optimize-css-assets-webpack-plugin</code>这个插件可以对代码进行合并和压缩。</li></ul> <h3 id="shimming-src-shimming"><a href="#shimming-src-shimming" class="header-anchor">#</a> shimming(src_shimming)</h3> <p>根据代码可知，如果在jquery.ui.js中不引入jquery，那么项目在启动后会报错。<br>
+这个jquery由于是第三方包，所以不想在所有的页面中为了使用这个<code>$</code>而都引入jquery，于是我们可以这么做：
+在webpack.base.js中</p> <div class="language- extra-class"><pre class="language-text"><code>const webpack = require('webpack')
+// 在plugin配置中：
+new webpack.ProvidePlugin({
+  $:'jquery'   //如果一个模块中使用了$这个符号，就会在模块中自动引入jquery这个库
+})
+</code></pre></div><p>这个时候将jquery.ui.js中的第一行注释，重新启动，发现代码运行正常。<br>
+这里遗留一个小问题是:在jquery.ui.js中使用了lodash，但是在ProvidePlugin中没有配置lodash，但是却能够打印。</p> <h3 id="环境变量的使用-src-env"><a href="#环境变量的使用-src-env" class="header-anchor">#</a> 环境变量的使用(src_env)</h3> <ol><li>将build中三个配置文件copy至src_env</li> <li>将这三个配置文件分别进行更改，只在webpack.base.js中导出，且传入一个env对象</li> <li>在package.json中将scripts的dev修改为如下(代码中未做变更，这里只是说明)</li></ol> <div class="language- extra-class"><pre class="language-text"><code> &quot;dev&quot;: &quot;webpack-dev-server --config ./build/webpack.base.js&quot;, 
+ &quot;dev-build&quot;: &quot;webpack  --config ./build/webpack.base.js&quot;, 
+</code></pre></div><ol start="4"><li>如果为build命令，需要添加一个参数</li></ol> <div class="language- extra-class"><pre class="language-text"><code> &quot; build&quot;: &quot;webpack  --env.production --config ./build/webpack.base.js&quot;, 
+</code></pre></div><p>（未对以上代码进行测试）</p> <h3 id="library-打包"><a href="#library-打包" class="header-anchor">#</a> Library 打包</h3> <p>自己发布一个 npm 包，在配置好自己的项目包之后，在 npm 官方注册账号，npm login 登录，npm publish 即可</p> <h3 id="progessive-web-application-pwa"><a href="#progessive-web-application-pwa" class="header-anchor">#</a> Progessive Web Application - PWA</h3> <ul><li>安装第三方插件：workbox-webpack-plugin。</li> <li>线上打包配置文件：添加 plugin：new WorkboxPlugin.GenerateSW()。</li> <li>在业务代码中，应该 serverWorker，就可以将页面缓存住了。</li></ul> <h3 id="typascript-的打包配置"><a href="#typascript-的打包配置" class="header-anchor">#</a> TypaScript 的打包配置</h3> <p>总结至：https://github.com/liugezhou/typescript_webpack</p> <h3 id="使用-webpackdevserver-实现请求转发"><a href="#使用-webpackdevserver-实现请求转发" class="header-anchor">#</a> 使用 WebpackDevServer 实现请求转发</h3> <p>本节主要是对 webpack 的配置 devServer 属性中的 proxy 做了一个讲解，没啥内容。</p> <h3 id="webpackdevserver-解决单页面应用路由问题"><a href="#webpackdevserver-解决单页面应用路由问题" class="header-anchor">#</a> WebpackDevServer 解决单页面应用路由问题</h3> <p>devServer:historyApiFallback: true</p> <h3 id="eslint-在-webpack-中的配置"><a href="#eslint-在-webpack-中的配置" class="header-anchor">#</a> Eslint 在 Webpack 中的配置</h3> <ul><li>npm i eslint -D</li> <li>npx eslint --init</li> <li>npm i babel-eslint -D</li></ul> <h3 id="提升-webpack-打包速度的方法"><a href="#提升-webpack-打包速度的方法" class="header-anchor">#</a> 提升 Webpack 打包速度的方法</h3> <ol><li>跟上技术的迭代：Npde、Npm、Yarn</li> <li>在尽可能少的模块上应用 Loader (合理使用 exclude 和 include)</li> <li>Plugin 尽可能精简少用并确保可靠</li> <li>resolve 参数合理配置(如果想引入默认为 js 或者 jsx 的文件，在 webpack 配置文件中加<code>resolve:{extensions:['.js','jsx']}</code>)</li></ol> <h3 id="如何编写一个-loader"><a href="#如何编写一个-loader" class="header-anchor">#</a> 如何编写一个 loader</h3> <p>借助 loader 处理引用的文件。<br> <a href="https://github.com/liugezhou/make-loader" target="_blank" rel="noopener noreferrer">demo 仓库源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="如何编写一个-plugin"><a href="#如何编写一个-plugin" class="header-anchor">#</a> 如何编写一个 Plugin</h3> <p>在打包的某个具体时刻做的操作(比如打包钱清空 dist 目录，打包完成的 html 自动生成等)<br> <a href="https://github.com/liugezhou/make-plugin" target="_blank" rel="noopener noreferrer">demo 仓库源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="bundler-源码编写-模块分析"><a href="#bundler-源码编写-模块分析" class="header-anchor">#</a> Bundler 源码编写(模块分析)</h3> <p><a href="https://github.com/liugezhou/make-bundle" target="_blank" rel="noopener noreferrer">demo 仓库源码<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p> <h3 id="通过-createreactapp-深入学习-webpack-配置"><a href="#通过-createreactapp-深入学习-webpack-配置" class="header-anchor">#</a> 通过 CreateReactApp 深入学习 Webpack 配置</h3> <h3 id="通过-vuecli3-学习-webpack-配置"><a href="#通过-vuecli3-学习-webpack-配置" class="header-anchor">#</a> 通过 VueCli3 学习 webpack 配置</h3> <h3 id="常用的-webpack-插件"><a href="#常用的-webpack-插件" class="header-anchor">#</a> <a href="https://mp.weixin.qq.com/s/FPENfKo7mObEYcVP0wofRA" target="_blank" rel="noopener noreferrer">常用的 webpack 插件<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></h3> <ul><li>HotModuleReplacementPlugin:模块热更新插件(webpack 自带)。</li> <li>html-webpack-plugin:生成 html 文件。</li> <li>clean-webpack-plugin:打包前清理上一次项目生成的 bundle 文件。</li> <li>extract-text-webpack-plugin:将 CSS 生成文件，而非内联。</li> <li>mini-css-extract-plugin:将 CSS 提取为独立的文件的插件。</li> <li>purifycss-webpack:有时候我们 css 写多了或者重复了，这就造成了多余的代码，我们希望在生产环境下去除。</li> <li>optimize-css-assets-webpack-plugin:我们希望减小 css 打包后的体积，可以用到此插件。</li> <li>uglifyjs-webpack-plugin:是 vue-cli 默认使用的压缩代码方式，用来对 js 文件进行压缩，从而减少 js 文件的大小，加速 load 速度。</li> <li>terser-webpack-plugin:Webpack4.0 默认是使用 terser-webpack-plugin 这个压缩插件，在此之前是使用 uglifyjs-webpack-plugin，这两者的区别是后者对 ES6 的压缩不是很友好。</li> <li>webpack.NoEmitOnErrorsPlugin():报错但不退出 webpack 进程。</li> <li>compression-webpack-plugin:所有现代浏览器都支持 gzip 压缩，启用 gzip 压缩可大幅缩减传输资源大小，从而缩短资源下载时间，减少首次白屏时间，提升用户体验。(这个方法还需要后端配置支持)</li> <li>webpack.DefinePlugin:允许创建一个在编译时可以配置的全局变量，在模块中直接使用这些变量，无需作任何声明，会对开发模式和发布模式的构建允许不同的行为非常有用。</li> <li>webpack.ProvidePlugin:自动加载模块。</li> <li>copy-webpack-plugin:我们在 public/index.html 中引入了其他的静态资源(js、png、css 等)，在打包的时候 webpack 并不会帮我们拷贝到 dist 目录，因此 copy-webpack-plugin 可以很友好地帮我们做拷贝工作。</li></ul></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/liugezhou/frontend-docs/edit/main//docs/notes/before.md" target="_blank" rel="noopener noreferrer">错误反馈</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">10/18/2022, 5:58:40 PM</span></div></footer> <div class="page-nav"><p class="inner"><!----> <span class="next"><a href="/frontend-docs/notes/vim.html">
+        vim全基础
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"></div></div>
+    <script src="/frontend-docs/assets/js/app.9f39f6f2.js" defer></script><script src="/frontend-docs/assets/js/2.66dbf3eb.js" defer></script><script src="/frontend-docs/assets/js/11.55773e38.js" defer></script>
+  </body>
+</html>
