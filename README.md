@@ -1,3 +1,5 @@
+项目迁移至：[https://github.com/liugezhou/daydayup](https://github.com/liugezhou/daydayup)
+
 ## 本项目搭建全流程
 1. mkdir frontend-docs
 2. npm i -y
